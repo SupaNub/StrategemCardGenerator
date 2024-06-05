@@ -1,0 +1,172 @@
+<html>
+	<head>
+		<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Trade+Winds&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+		<link href="style.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<img id ="back-splat" src="back-splat5.png">
+		<div class="sideBySide" id="container">
+			<form id="inputForm">
+			
+				<label for="title">Title:</label><br>
+				<input type="text" id="title" name="title"><br><br>
+				
+				<label for="type">Type:</label><br>
+				<input type="text" id="type" name="type"><br><br>
+				
+				<label for="when">When:</label><br>
+				<input type="text" id="when" name="when"><br><br>
+				
+				<label for="target">Target:</label><br>
+				<input type="text" id="target" name="target"><br><br>
+				
+				<label for="effect">Effect:</label><br>
+				<input type="text" id="effect" name="effect"><br><br>
+				
+				<label for="restrictions">Restrictions:</label><br>
+				<input type="text" id="restrictions" name="restrictions"><br><br>
+				
+				<label for="cp">CP:</label><br>
+				<input type="number" id="cp" name="cp"><br><br>
+				
+				
+				<fieldset class="phase">
+					<legend>Phase:</legend>
+					 <button type="button" onclick="selectCheckboxes('phase', true)">Select All</button>
+            <button type="button" onclick="selectCheckboxes('phase', false)">Clear All</button><br>
+					<input type="checkbox" id="command" name="phase[]" value="command">
+					<label for="command">Command</label><br>
+					<input type="checkbox" id="movement" name="phase[]" value="movement">
+					<label for="movement">Movement</label><br>
+					<input type="checkbox" id="shooting" name="phase[]" value="shooting">
+					<label for="shooting">Shooting</label><br>
+					<input type="checkbox" id="charge" name="phase[]" value="charge">
+					<label for="charge">Charge</label><br>
+					<input type="checkbox" id="fight" name="phase[]" value="fight">
+					<label for="fight">Fight</label>
+				</fieldset><br>
+				
+				<fieldset class="turn">
+					<legend>Turn:</legend>
+					<button type="button" onclick="selectCheckboxes('turn', true)">Select All</button>
+            <button type="button" onclick="selectCheckboxes('turn', false)">Clear All</button><br>
+					<input type="checkbox" id="your_turn" name="turn[]" value="your_turn">
+					<label for="your_turn">Your Turn</label><br>
+					<input type="checkbox" id="opponent_turn" name="turn[]" value="opponent_turn">
+					<label for="opponent_turn">Opponent Turn</label>
+				</fieldset><br>
+				
+				<button type="button" onclick="addStrategem()">Submit</button><br><br>
+				<button type="button" onclick="randomBackSplat()">"Random" Background Fog</button>
+				<button type="button" onclick="printReady()">Ready to Print</button>
+			</form>
+			<div class="strategem_list" id="strategem_list">
+			</div>
+
+		</div>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+		<script src="script.js"></script>
+		
+		<script id="strategem_template_1" type="text/x-handlebars-template" style="display:none;">
+			<div class="strategem" style={{COLOUR}}>
+				<div class="template_imgs">
+					<img src={{FRAME}} style="width:85mm;left:6px;top:17.5px;">
+					<img src={{CP}} style="width:16mm;left:-2.75mm;top:-2mm;">
+					<img src={{PHASE1}} style="width:16mm;left:-2.6mm;top:14mm;">
+					<img src="dots.png" style="width:65mm;left:12.5mm;top:10mm;">
+				</div>
+				<span class="strategem_title" style={{COLOUR}}>{{TITLE}}</span><br>
+				<span class="stratagem_type">{{TYPE}}</span>
+				<!--dots--><br>
+				
+				<span class="strategem_subtitle" style={{COLOUR}}>When:</span>
+				<span class="strategem_attribute">{{WHEN}}</span><br>
+				
+				<span class="strategem_subtitle" style={{COLOUR}}>Target:</span>
+				<span class="strategem_attribute">{{TARGET}}</span><br>
+				
+				<span class="strategem_subtitle" style={{COLOUR}}>Effect:</span>
+				<span class="strategem_attribute">{{EFFECT}}</span><br>
+				
+				<span class="strategem_subtitle" style={{COLOUR}}>Restriction:</span>
+				<span class="strategem_attribute">{{RESTRICTIONS}}</span><br>
+			</div>
+		</script>
+		
+		<script id="strategem_template_1_reduced" type="text/x-handlebars-template" style="display:none;">
+			<div class="strategem" style={{COLOUR}}>
+				<div class="template_imgs">
+					<img src={{FRAME}} style="width:85mm;left:6px;top:17.5px;">
+					<img src={{CP}} style="width:16mm;left:-2.75mm;top:-2mm;">
+					<img src={{PHASE1}} style="width:16mm;left:-2.6mm;top:14mm;">
+					<img src="dots.png" style="width:65mm;left:12.5mm;top:10mm;">
+				</div>
+				<span class="strategem_title" style={{COLOUR}}>{{TITLE}}</span><br>
+				<span class="stratagem_type">{{TYPE}}</span>
+				<!--dots--><br>
+				
+				<span class="strategem_subtitle" style={{COLOUR}}>When:</span>
+				<span class="strategem_attribute">{{WHEN}}</span><br>
+				
+				<span class="strategem_subtitle" style={{COLOUR}}>Target:</span>
+				<span class="strategem_attribute">{{TARGET}}</span><br>
+				
+				<span class="strategem_subtitle" style={{COLOUR}}>Effect:</span>
+				<span class="strategem_attribute">{{EFFECT}}</span><br>
+			</div>
+		</script>
+		<script id="strategem_template_2" type="text/x-handlebars-template" style="display:none;">
+			<div class="strategem" style={{COLOUR}}>
+				<div class="template_imgs">
+					<img src={{FRAME}} style="width:85mm;left:6px;top:17.5px;">
+					<img src={{CP}} style="width:16mm;left:-2.75mm;top:-2mm;">
+					<img src={{PHASE1}} style="width:16mm;left:-2.6mm;top:14mm;">
+					<img src={{PHASE2}} style="width:16mm;left:-2.6mm;top:30mm;">
+					<img src="dots.png" style="width:65mm;left:12.5mm;top:10mm;">
+				</div>
+				<span class="strategem_title" style={{COLOUR}}>{{TITLE}}</span><br>
+				<span class="stratagem_type">{{TYPE}}</span>
+				<!--dots--><br>
+				
+				<span class="strategem_subtitle" style={{COLOUR}}>When:</span>
+				<span class="strategem_attribute">{{WHEN}}</span><br>
+				
+				<span class="strategem_subtitle" style={{COLOUR}}>Target:</span>
+				<span class="strategem_attribute">{{TARGET}}</span><br>
+				
+				<span class="strategem_subtitle" style={{COLOUR}}>Effect:</span>
+				<span class="strategem_attribute">{{EFFECT}}</span><br>
+				
+				<span class="strategem_subtitle" style={{COLOUR}}>Restriction:</span>
+				<span class="strategem_attribute">{{RESTRICTIONS}}</span><br>
+			</div>
+		</script>
+		
+		<script id="strategem_template_2_reduced" type="text/x-handlebars-template" style="display:none;">
+			<div class="strategem" style={{COLOUR}}>
+				<div class="template_imgs" >
+					<img src={{FRAME}} style="width:85mm;left:6px;top:17.5px;">
+					<img src={{CP}} style="width:16mm;left:-2.75mm;top:-2mm;">
+					<img src={{PHASE1}} style="width:16mm;left:-2.6mm;top:14mm;">
+					<img src={{PHASE2}} style="width:16mm;left:-2.6mm;top:30mm;">
+					<img src="dots.png" style="width:65mm;left:12.5mm;top:10mm;">
+				</div>
+				<span class="strategem_title" style={{COLOUR}}>{{TITLE}}</span><br>
+				<span class="stratagem_type">{{TYPE}}</span>
+				<!--dots--><br>
+				
+				<span class="strategem_subtitle" style={{COLOUR}}>When:</span>
+				<span class="strategem_attribute">{{WHEN}}</span><br>
+				
+				<span class="strategem_subtitle" style={{COLOUR}}>Target:</span>
+				<span class="strategem_attribute">{{TARGET}}</span><br>
+				
+				<span class="strategem_subtitle" style={{COLOUR}}>Effect:</span>
+				<span class="strategem_attribute">{{EFFECT}}</span><br>
+			</div>
+		</script>
+	</body>
+</html>

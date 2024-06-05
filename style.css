@@ -1,0 +1,104 @@
+html{
+	background-color:#DDDBC0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+}
+
+#back-splat{
+	opacity: 0.2;
+	position:fixed;
+	width:100%;
+	height:100%;
+	top:0;
+	z-index:-1;
+}
+
+b{
+	font-weight:1000;
+}
+
+form{
+	z-index:10;
+	color: #000;
+	font-weight:700;
+	font-size: 10pt;
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+fieldset{
+	border-color:#000;
+	border: 7px solid;
+	border-radius: 10px;
+}
+
+input,button{
+	border: 3px solid #000;
+	border-radius:6px;
+	padding:6px;
+}
+
+.sideBySide{
+	display:grid;
+	grid-template-columns:1fr 1fr;
+	column-gap:1cm;
+}
+
+
+.strategem_list{
+	width:195mm;
+	/* height:285mm; */
+	display:grid;
+	grid-template-areas:"strategem strategem";
+    grid-template-rows: 85mm;
+    grid-template-columns: 1fr 1fr;
+    margin: 1cm;
+	gap:0.5cm;
+}
+
+.strategem{
+	width:75mm;
+	height:75mm;
+	word-wrap:normal;
+    justify-content: center;
+    align-items: center;
+	padding:3px 3px 3px 50px;
+	border: 7px solid;
+	border-radius: 10px;
+	position:relative;
+}
+
+.template_imgs img{
+	position:absolute;
+}
+
+.strategem_title{
+  font-weight:700;
+  font-size: 10pt;
+  font-family: 'Trade Winds', cursive;
+}
+
+.stratagem_type{
+  color: #000;
+  font-weight:700;
+  font-size: 9pt;
+  font-family: 'Trade Winds', cursive;
+}
+
+.strategem_subtitle{
+  color: #000;
+  font-weight:700;
+  font-size: 10pt;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.strategem_attribute{
+  color: #000;
+  font-weight:500;
+  font-size: 8pt;
+  font-family: 'Nunito Sans', sans-serif;
+}
